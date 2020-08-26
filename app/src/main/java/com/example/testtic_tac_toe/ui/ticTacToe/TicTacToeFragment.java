@@ -43,6 +43,10 @@ public class TicTacToeFragment extends Fragment {
         game = new Game();
         buildGameField();
         game.start();
+        binding.resetButton.setOnClickListener(view -> {
+            game.reset();
+            refresh();
+        });
 
         binding.setViewModel(viewModel);
         binding.setLifecycleOwner(this);
