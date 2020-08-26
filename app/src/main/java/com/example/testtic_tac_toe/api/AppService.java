@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AppService {
-    private static final String BASE_URL = "https://my-json-server.typicode.com/Vitalik-19/myJson/";
+    private static final String BASE_URL = "http://194.5.157.136:8081/";
     private static AppService mInstance;
     private static Retrofit retrofit;
 

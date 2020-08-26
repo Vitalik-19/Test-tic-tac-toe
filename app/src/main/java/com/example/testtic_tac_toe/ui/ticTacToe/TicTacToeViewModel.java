@@ -17,4 +17,16 @@ public class TicTacToeViewModel extends ViewModel {
         }
         return field;
     }
+
+    private MutableLiveData<Game> game;
+
+    LiveData<Game> getGame() {
+        if (game == null) {
+            game = new MutableLiveData<>();
+        }
+        return game;
+    }
+    void setGame(Game game){
+        this.game.setValue(game);
+    }
 }

@@ -18,6 +18,8 @@ import com.example.testtic_tac_toe.api.AppService;
 import com.example.testtic_tac_toe.api.model.FlagDTO;
 import com.example.testtic_tac_toe.databinding.HomeFragmentBinding;
 
+import java.io.IOException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -54,6 +56,7 @@ public class HomeFragment extends Fragment {
                 .enqueue(new Callback<FlagDTO>() {
                     @Override
                     public void onResponse(@NonNull Call<FlagDTO> call, @NonNull Response<FlagDTO> response) {
+
                         FlagDTO flag = response.body();
 
                         if (flag.getFlag()) {

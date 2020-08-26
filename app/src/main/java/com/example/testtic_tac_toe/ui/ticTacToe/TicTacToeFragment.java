@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.testtic_tac_toe.R;
@@ -41,6 +42,18 @@ public class TicTacToeFragment extends Fragment {
         viewModel = ViewModelProviders.of(this).get(TicTacToeViewModel.class);
 
         game = new Game();
+
+        viewModel.getGame().observe(getViewLifecycleOwner(), new Observer<Game>() {
+            @Override
+            public void onChanged(Game game) {
+                if(game == null){
+                    Toast.makeText(getContext(),"true", Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(getContext(),"else", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
         game.start();
         buildGameField();
 
@@ -55,7 +68,6 @@ public class TicTacToeFragment extends Fragment {
     }
 
     public void buildGameField() {
-        Square[][] field = game.getField();
         int dip = 80;
         float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dip, getResources().getDisplayMetrics());
 
@@ -123,14 +135,12 @@ public class TicTacToeFragment extends Fragment {
     }
 
     private void refresh() {
-        Square[][] field = game.getField();
-
-        for (int i = 0, len = field.length; i < len; i++) {
-            for (int j = 0, len2 = field[i].length; j < len2; j++) {
-                if (field[i][j].getPlayer() == null) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (game.getField()[i][j].getPlayer() == null) {
                     buttons[i][j].setText("");
                 } else {
-                    buttons[i][j].setText(field[i][j].getPlayer().getName());
+                    buttons[i][j].setText(game.getField()[i][j].getPlayer().getName());
                 }
             }
         }
