@@ -1,27 +1,21 @@
 package com.example.testtic_tac_toe.logic;
 
-class Square {
-    private static Integer height;
-    private static Integer width;
+public class Square
+{
+    private Player player = null;
 
-    private Square(){
-        width = 50;
-        height = 50;
+    public void fill(Player player)
+    {
+        this.player = player;
     }
 
-    public static Integer getWidth() {
-        return width;
+    public boolean isFilled()
+    {
+        return player != null;
     }
 
-    public static void setWidth(Integer width) {
-        Square.width = width;
-    }
-
-    public static Integer getHeight() {
-        return height;
-    }
-
-    public static void setHeight(Integer height) {
-        Square.height = height;
+    public Player getPlayer()
+    {
+        return player;
     }
 }
