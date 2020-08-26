@@ -41,8 +41,9 @@ public class TicTacToeFragment extends Fragment {
         viewModel = ViewModelProviders.of(this).get(TicTacToeViewModel.class);
 
         game = new Game();
-        buildGameField();
         game.start();
+        buildGameField();
+
         binding.resetButton.setOnClickListener(view -> {
             game.reset();
             refresh();

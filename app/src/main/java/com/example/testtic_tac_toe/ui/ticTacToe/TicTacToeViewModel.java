@@ -1,38 +1,20 @@
 package com.example.testtic_tac_toe.ui.ticTacToe;
 
-import android.widget.ImageView;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.testtic_tac_toe.logic.Game;
+import com.example.testtic_tac_toe.logic.Square;
+
 public class TicTacToeViewModel extends ViewModel {
 
-    private MutableLiveData<ImageView[][]> buttons;
+    private MutableLiveData<Square[][]> field;
 
-//    TicTacToeViewModel() {
-//        onReset();
-//    }
-
-    private LiveData<ImageView[][]> getButtons() {
-        if (buttons == null) {
-            buttons = new MutableLiveData<>();
+    LiveData<Square[][]> getField() {
+        if (field == null) {
+            field = new MutableLiveData<>();
         }
-        return buttons;
+        return field;
     }
-
-    void getCreateButtons(ImageView[][] imageViews) {
-        buttons.setValue(imageViews);
-    }
-
-    void onReset() {
-        for (int i = 0; i > 3; i++) {
-            for (int j = 0; j > 3; j++) {
-        buttons.getValue()[i][j].setImageDrawable(null);
-            }
-        }
-    }
-
-    enum StateSquare {NONE, CROSS, ZERO}
-
 }

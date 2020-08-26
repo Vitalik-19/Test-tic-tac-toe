@@ -6,22 +6,16 @@ public class Game {
         public Player checkWinner();
     }
 
-    // игроки
     private Player[] players;
 
-    // поле
     private Square[][] field;
 
-    // начата ли игра?
     private boolean started;
 
-    // текущий игрок
     private Player activePlayer;
 
-    // Считает колличество заполненных ячеек
     private int filled;
 
-    // Всего ячеек
     private int squareCount;
 
     private WinnerCheckerInterface[] winnerCheckers;
@@ -29,7 +23,6 @@ public class Game {
     public Game() {
         field = new Square[3][3];
         squareCount = 0;
-        // заполнение поля
         for (int i = 0, l = field.length; i < l; i++) {
             for (int j = 0, l2 = field[i].length; j < l2; j++) {
                 field[i][j] = new Square();
@@ -41,8 +34,6 @@ public class Game {
         activePlayer = null;
         filled = 0;
 
-
-        // Инициализация "судей"
         winnerCheckers = new WinnerCheckerInterface[4];
         winnerCheckers[0] = new WinnerCheckerHorizontal(this);
         winnerCheckers[1] = new WinnerCheckerVertical(this);
